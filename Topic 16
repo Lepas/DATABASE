@@ -1,0 +1,20 @@
+ SET serveroutput ON
+
+CREATE OR REPLACE FUNCTION func_count_offerings
+RETURN number IS
+
+      vn_course_ct   NUMBER(4);
+
+BEGIN
+
+SELECT COUNT(*)
+INTO vn_course_ct 
+FROM offerings
+WHERE course_id = 515;
+
+RETURN vn_course_ct ;
+
+END func_count_offerings;
+/
+
+
