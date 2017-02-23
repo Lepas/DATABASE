@@ -1,3 +1,22 @@
+----------anonymousblock
+
+ SET serveroutput ON
+
+DECLARE 
+	vn_offer_count NUMBER(4);
+	
+BEGIN
+	vn_offer_count := func_count_offerings;
+		DBMS_OUTPUT.PUT_LINE('The number of offerings is ' || vn_offer_count);
+END;
+/
+
+
+
+
+
+------------function.sql
+ 
  SET serveroutput ON
 
 CREATE OR REPLACE FUNCTION func_count_offerings
@@ -17,4 +36,20 @@ RETURN vn_course_ct ;
 END func_count_offerings;
 /
 
+-----------proc_using_func
 
+ SET serveroutput ON
+
+CREATE OR REPLACE PROCEDURE proc_using_func IS
+	vn_offer_count NUMBER(20);
+ 
+BEGIN
+	vn_offer_count := func_count_offerings;
+		DBMS_OUTPUT.PUT_LINE('The number of offerings is ' || vn_offer_count);
+END proc_using_func;
+/
+SHOW ERRORS;
+EXECUTE proc_using_func;
+
+
+--------
